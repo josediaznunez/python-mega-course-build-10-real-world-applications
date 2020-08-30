@@ -6,7 +6,11 @@ with open('./application-1-english-thesaurus/data.json') as definitions_file:
 
 def get_definition(word):
   word = word.strip()
-  if word.lower() in definitions:
+  if word in definitions:
+    return format_response(word)
+  elif word.upper() in definitions:
+    return format_response(word.upper())
+  elif word.lower() in definitions:
     return format_response(word.lower())
   elif word.title() in definitions:
     return format_response(word.title())
