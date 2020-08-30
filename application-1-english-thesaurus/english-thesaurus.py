@@ -10,16 +10,14 @@ def get_definition(word):
     return definitions[word_formatted]
   else:    
     print("The word \"" + word + "\" doesn't exist.")
+    
     closest_matching_words = difflib.get_close_matches(word_formatted, definitions.keys())
     for close_matching_word in closest_matching_words:
-      confirmation = input(
-        "Did you mean " + close_matching_word + "? " + 
-        "Please type Y or N to confirm: "
-      )
-      
+      print("Did you mean " + close_matching_word + "? ")
+      confirmation = ""
       while confirmation not in {"Y", "N"}:
-        confirmation = input("Please type Y or N to confirm: ")
-
+        confirmation = input("Please type Y or N to confirm: ")      
+      
       if confirmation == "Y":
         return definitions[close_matching_word]
     
