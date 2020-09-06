@@ -16,14 +16,22 @@ html = """
     Volcano name:<br>
     <a href="https://www.google.com/search?q=%s" target="_blank">%s</a><br>
     Height: %s m
-    """
+"""
 
 for lat, lon, elev, name in zip(lat, lon, elev, name):
     iframe = folium.IFrame(html=html % (name, name, elev), width=200, height=100)
+
+    if elev < 2000:
+        marker_color = folium.Icon(color="green")
+    elif elev >= 2000 and elev < 3000:
+        marker_color = folium.Icon(color="orange")
+    else:
+        marker_color = folium.Icon(color="red")
+    
     fg.add_child(folium.Marker(
             location=[lat, lon], 
             popup=folium.Popup(iframe),
-            icon=folium.Icon(color="green")
+            icon=marker_color
         )
     )
 
