@@ -10,6 +10,14 @@ lon  = list(volcano_data["LON"])
 elev = list(volcano_data["ELEV"])
 name = list(volcano_data["NAME"])
 
+def color_producer(elev):
+    if elev < 2000:
+        return "green"
+    elif elev >= 2000 and elev < 3000:
+        return "orange"
+    else:
+        return "red"
+
 map = folium.Map(location=[45, -121], zoom_start=6, tiles="Stamen Terrain")
 fg = folium.FeatureGroup(name="My Map")
 html = """
@@ -32,7 +40,7 @@ for lat, lon, elev, name in zip(lat, lon, elev, name):
     fg.add_child(folium.Marker(
             location=[lat, lon], 
             popup=folium.Popup(iframe),
-            icon=marker_color
+            icon=folium.Icon(color=color_producer(elev))
         )
     )
 
