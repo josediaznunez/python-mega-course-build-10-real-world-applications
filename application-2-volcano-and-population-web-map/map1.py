@@ -10,10 +10,10 @@ lon  = list(volcano_data["LON"])
 elev = list(volcano_data["ELEV"])
 name = list(volcano_data["NAME"])
 
-def color_producer(elev):
-    if elev < 2000:
+def color_producer(elevation):
+    if elevation < 1000:
         return "green"
-    elif elev >= 2000 and elev < 3000:
+    elif 1000 <= elevation < 3000:
         return "orange"
     else:
         return "red"
