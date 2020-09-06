@@ -13,6 +13,7 @@ name = list(volcano_data["NAME"])
 map = folium.Map(location=[45, -121], zoom_start=6, tiles="Stamen Terrain")
 fg = folium.FeatureGroup(name="My Map")
 html = """
+    <h4>Volcano information:</h4>
     Volcano name:<br>
     <a href="https://www.google.com/search?q=%s" target="_blank">%s</a><br>
     Height: %s m
