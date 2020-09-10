@@ -43,10 +43,6 @@ for lat, lon, elev, name in zip(lat, lon, elev, name):
         )
     )
 
-# fg.add_child(folium.GeoJson(data=(open(PROJECT_PATH + GEO_JSON_PATH, "r", encoding="utf-8-sig"))))
-# geo_json_file = open(PROJECT_PATH + GEO_JSON_PATH, "r", encoding="utf-8-sig")
-# data = geo_json_file.read()
-
 with open(PROJECT_PATH + GEO_JSON_PATH, encoding="utf-8-sig") as geo_json_file:
     geo_json_data = geo_json_file.read()
 
