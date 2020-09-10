@@ -21,7 +21,7 @@ def color_producer(elevation):
         return "red"
 
 map = folium.Map(location=[45, -121], zoom_start=6, tiles="Stamen Terrain")
-fg = folium.FeatureGroup(name="My Map")
+fgv = folium.FeatureGroup(name="Volcanoes")
 html = """
     <h4>Volcano information:</h4>
     Volcano name:<br>
@@ -32,7 +32,7 @@ html = """
 for lat, lon, elev, name in zip(lat, lon, elev, name):
     iframe = folium.IFrame(html=html % (name, name, elev), width=200, height=100)
     
-    fg.add_child(folium.CircleMarker(
+    fgv.add_child(folium.CircleMarker(
             location=[lat, lon], 
             popup=folium.Popup(iframe),
             color="grey",
@@ -46,7 +46,9 @@ for lat, lon, elev, name in zip(lat, lon, elev, name):
 with open(PROJECT_PATH + GEO_JSON_PATH, encoding="utf-8-sig") as geo_json_file:
     geo_json_data = geo_json_file.read()
 
-fg.add_child(folium.GeoJson(
+fgp = folium.FeatureGroup(name="Population")
+
+fgp.add_child(folium.GeoJson(
         data=geo_json_data, 
         style_function=lambda x: {
             'fillColor': 'green' 
@@ -58,5 +60,8 @@ fg.add_child(folium.GeoJson(
     )
 )
 
-map.add_child(fg)
+map.add_child(fgv)
+map.add_child(fgp)
+map.add_child(folium.LayerControl())
+
 map.save(PROJECT_PATH + MAP_PATH)
