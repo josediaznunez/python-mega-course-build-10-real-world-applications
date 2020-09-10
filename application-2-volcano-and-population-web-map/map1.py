@@ -29,20 +29,14 @@ html = """
 
 for lat, lon, elev, name in zip(lat, lon, elev, name):
     iframe = folium.IFrame(html=html % (name, name, elev), width=200, height=100)
-
-    if elev < 2000:
-        marker_color = folium.Icon(color="green")
-    elif elev >= 2000 and elev < 3000:
-        marker_color = folium.Icon(color="orange")
-    else:
-        marker_color = folium.Icon(color="red")
     
     fg.add_child(folium.CircleMarker(
             location=[lat, lon], 
             popup=folium.Popup(iframe),
             color=color_producer(elev),
             fill=True,
-            radius=10.00
+            radius=10.00,
+            fill_opacity=0.7
         )
     )
 
