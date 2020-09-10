@@ -50,9 +50,9 @@ fg.add_child(folium.GeoJson(
         data=geo_json_data, 
         style_function=lambda x: {
             'fillColor': 'green' 
-                if x['properties']['POP2005'] < 10000000 
+                if x['properties']['POP2005'] < 10_000_000 
             else 'orange' 
-                if 10000000 <= x['properties']['POP2005'] < 20000000
+                if 10_000_000 <= x['properties']['POP2005'] < 20_000_000
             else 'red'
         }
     )
