@@ -1,10 +1,12 @@
 import folium
 import pandas
 
-PROJECT_PATH = "/home/jose/Development/python-mega-course-build-10-real-world-applications/application-2-volcano-and-population-web-map/"
-DATA_PATH = "/home/jose/Development/python-mega-course-build-10-real-world-applications/application-2-volcano-and-population-web-map/Volcanoes.txt"
+PROJECT_PATH = "/home/jose/Development/python-mega-course-build-10-real-world-applications/application-2-volcano-and-population-web-map"
+DATA_PATH = "/Volcanoes.txt"
+GEO_JSON_PATH = "/world.json"
+MAP_PATH = "/Map1.html"
 
-volcano_data = pandas.read_csv(DATA_PATH)
+volcano_data = pandas.read_csv(PROJECT_PATH + DATA_PATH)
 lat  = list(volcano_data["LAT"])
 lon  = list(volcano_data["LON"])
 elev = list(volcano_data["ELEV"])
@@ -41,5 +43,14 @@ for lat, lon, elev, name in zip(lat, lon, elev, name):
         )
     )
 
+# fg.add_child(folium.GeoJson(data=(open(PROJECT_PATH + GEO_JSON_PATH, "r", encoding="utf-8-sig"))))
+# geo_json_file = open(PROJECT_PATH + GEO_JSON_PATH, "r", encoding="utf-8-sig")
+# data = geo_json_file.read()
+
+with open(PROJECT_PATH + GEO_JSON_PATH, encoding="utf-8-sig") as geo_json_file:
+    geo_json_data = geo_json_file.read()
+
+fg.add_child(folium.GeoJson(data=geo_json_data))
+
 map.add_child(fg)
-map.save(PROJECT_PATH + "Map1.html")
+map.save(PROJECT_PATH + MAP_PATH)
