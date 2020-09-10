@@ -37,12 +37,12 @@ for lat, lon, elev, name in zip(lat, lon, elev, name):
     else:
         marker_color = folium.Icon(color="red")
     
-    fg.add_child(folium.Circle(
+    fg.add_child(folium.CircleMarker(
             location=[lat, lon], 
             popup=folium.Popup(iframe),
             color=color_producer(elev),
             fill=True,
-            radius=1000
+            radius=10.00
         )
     )
 
