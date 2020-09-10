@@ -46,7 +46,17 @@ for lat, lon, elev, name in zip(lat, lon, elev, name):
 with open(PROJECT_PATH + GEO_JSON_PATH, encoding="utf-8-sig") as geo_json_file:
     geo_json_data = geo_json_file.read()
 
-fg.add_child(folium.GeoJson(data=geo_json_data))
+fg.add_child(folium.GeoJson(
+        data=geo_json_data, 
+        style_function=lambda x: {
+            'fillColor': 'green' 
+                if x['properties']['POP2005'] < 10000000 
+            else 'orange' 
+                if 10000000 <= x['properties']['POP2005'] < 20000000
+            else 'red'
+        }
+    )
+)
 
 map.add_child(fg)
 map.save(PROJECT_PATH + MAP_PATH)
