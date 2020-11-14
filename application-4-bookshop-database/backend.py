@@ -45,7 +45,5 @@ def update(id, title, author, year, isbn):
   conn.close()
 
 connect()
-update(1, 'Great Gatsby, The', 'Fitzgerald, F. Scott', 1925, 9780743273565)
-
 for row in view():
   print(row)
