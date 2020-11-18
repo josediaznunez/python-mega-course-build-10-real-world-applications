@@ -13,5 +13,10 @@
         "username": "user3",
         "password": "password3",
         "created": "2020-11-18 14-55-56"
+    },
+    "user4": {
+        "username": "user4",
+        "password": "password4",
+        "created": "2020-11-18 15-42-32"
     }
 }
