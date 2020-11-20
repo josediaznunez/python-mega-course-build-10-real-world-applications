@@ -1,0 +1,2 @@
+/home/jose/Development/python-mega-course-build-10-real-world-applications/application-5-feel-good-mobile-app/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/obj/local/armeabi-v7a/objs-debug/sqlite3/sqlite3.o: \
+  /home/jose/Development/python-mega-course-build-10-real-world-applications/application-5-feel-good-mobile-app/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3/jni/../sqlite3.c
